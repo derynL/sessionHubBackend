@@ -1,0 +1,5 @@
+_id,accountType,email,name.firstName,name.lastName,password,username
+63a1d7832975a3193e6813d9,Service Provider,someone@else.com,Someone,Else,1234Password,someone
+63a1d7a42975a3193e6813da,Service Provider,another@person.com,Another,Person,1234Password,another
+63a1d7ca2975a3193e6813db,Service Provider,gifted@singer.com,Gifted,Singer,1234Password,gifted
+63a1d7fb2975a3193e6813dc,Service Provider,virtuoso@pianist.com,Virtuoso,Pianist,1234Password,virtuoso

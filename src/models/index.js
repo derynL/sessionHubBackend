@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import Peeper from './peeper.model';
+import Member from './member.model';
 
 mongoose.Promise = global.Promise;
 
@@ -8,7 +8,7 @@ const db = {};
 
 db.mongoose = mongoose;
 
-db.user = Peeper;
+db.user = Member;
 
 // db.ROLES = ['user', 'admin', 'moderator'];
 

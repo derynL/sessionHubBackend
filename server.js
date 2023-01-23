@@ -1,13 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
-import { login } from './src/routes/login.js';
-import { signup } from './src/routes/signup.js';
-import { allPeeps } from './src/routes/allPeeps.js';
-import { addPeep } from './src/routes/addPeep.js';
+import bodyParser from 'body-parser';
+import { router as addUser } from './routes/addUser.js';
+import { login } from './routes/login.js';
+import { profile } from './routes/getProfile.js';
 
 const app = express();
 
@@ -17,8 +15,8 @@ const port = process.env.PORT;
 const dburi = process.env.DBURI;
 
 const main = async () => {
-  console.log(`Connecting to database at: ${process.env.DBURI}`);
-  await mongoose.connect(process.env.DBURI);
+  console.log(`Connecting to database at ${dburi}`);
+  await mongoose.connect(dburi);
 };
 
 main()
@@ -27,13 +25,12 @@ main()
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(`/`, allPeeps);
-app.use(`/post`, addPeep);
+app.use('/register', addUser);
 app.use(`/login`, login);
-app.use(`/signup`, signup);
+app.use(`/profile`, profile);
 
 const server = app.listen(port, host, () => {
-  console.log(`Server started at http://${host}:${port}`);
+  console.log(`Server running on http://${host}:${port}`);
 });
 
 export default server;

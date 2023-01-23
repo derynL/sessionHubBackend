@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const peeperSchema = new mongoose.Schema({
+const memberSchema = new mongoose.Schema({
   name: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -10,10 +10,15 @@ const peeperSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    trim: true,
+    match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   },
-  password: { type: String },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
-const Peeper = new mongoose.model('Peeper', peeperSchema);
+const Member = new mongoose.model('Member', memberSchema);
 
-export default Peeper;
+export default Member;
